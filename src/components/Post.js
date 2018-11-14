@@ -49,7 +49,7 @@ class Post extends Component {
     var form = () => {
       if(this.props.activePost){
         return  <form id="addComment" onSubmit={(e) => this.addComment(e)}>
-                  <label htmlFor="comment-input">Add: </label>
+                  <label htmlFor="comment-input">Comment: </label>
                   <input
                     type="text"
                     id="comment-input"

@@ -56,20 +56,26 @@ class Wall extends Component {
         <form onSubmit={(e) => this.createPost(e)}>
           <div>
             <h4>New post: </h4>
-            <label htmlFor="new-post-name">Name: </label>
-            <input
-              type="text"
-              id="new-post-name"
-              value={this.state.nameText}
-              onChange={(e) => this.updateNameText(e)}>
-            </input>
-            <label htmlFor="new-post-content">Content: </label>
-            <input
-              type="text"
-              id="new-post-content"
-              value={this.state.contentText}
-              onChange={(e) => this.updateContentText(e)}>
-            </input>
+            <span>
+              <label htmlFor="new-post-name">Name: </label>
+              <input
+                type="text"
+                id="new-post-name"
+                value={this.state.nameText}
+                onChange={(e) => this.updateNameText(e)}>
+              </input>
+            </span>
+            <br></br>
+            <span>
+              <label htmlFor="new-post-content">Content: </label>
+              <input
+                type="text"
+                id="new-post-content"
+                value={this.state.contentText}
+                onChange={(e) => this.updateContentText(e)}>
+              </input>
+            </span>
+            <br></br>
             <button type="submit">Submit</button>
           </div>
         </form>
