@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
 import Wall from './components/Wall.js';
+import Post from './components/Post.js';
+
 
 var config = {
     apiKey: "AIzaSyAYFGdKG89kOb6ir_AdV9CBEZynejltGDc",
@@ -36,6 +38,11 @@ class App extends Component {
           firebase={firebase}
           activatePost={(id, name) => this.activatePost(id, name)}
           activePostId={this.state.activePostId}
+        />
+        <Post
+          firebase={firebase}
+          activePostId={this.state.activePostId}
+          activePost={this.state.activePost}
         />
       </div>
     );

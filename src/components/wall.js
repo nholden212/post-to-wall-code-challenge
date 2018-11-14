@@ -6,17 +6,16 @@ class Wall extends Component {
     this.state = {
       posts: [],
       nameText: "",
-      contentText: "",
+      contentText: ""
     };
     this.postsRef = this.props.firebase.database().ref('posts');
-    this.itemsRef = this.props.firebase.database().ref('comments');
   }
 
   componentDidMount(){
-    this.mainListRef.on('child_added', snapshot => {
+    this.postsRef.on('child_added', snapshot => {
       const post = snapshot.val();
       post.key = snapshot.key;
-      var posts = this.state.lists.concat(post);
+      var posts = this.state.posts.concat(post);
       this.setState({ posts: posts });
     })
   }
@@ -31,11 +30,12 @@ class Wall extends Component {
 
   createPost(e){
     e.preventDefault();
-    if(!this.state.inputText){ return }
+    if(!this.state.nameText || !this.state.contentText){ return }
     this.postsRef.push({
-      name: this.state.inputText
+      name: this.state.nameText,
+      content: this.state.contentText
     });
-    this.setState({ inputText: "" });
+    this.setState({ nameText: "", contentText: "" });
   }
 
   render(){
@@ -45,7 +45,7 @@ class Wall extends Component {
           return  <div className="post" key={index} onClick={() => this.props.activatePost(post.key, post.name)}>
                     {post.name}
                   </div>
-        });
+        }));
 
     return(
       <div className="Wall full">

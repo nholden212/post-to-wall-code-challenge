@@ -11,11 +11,11 @@ class Post extends Component {
   }
 
   componentDidMount() {
-    this.itemsRef.on('child_added', snapshot => {
+    this.commentsRef.on('child_added', snapshot => {
       const item = snapshot.val();
       item.key = snapshot.key;
-      var items = this.state.items.concat(item);
-      this.setState({ items: items });
+      var comments = this.state.comments.concat(item);
+      this.setState({ comments: comments });
     })
   }
 
